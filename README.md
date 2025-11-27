@@ -30,9 +30,9 @@ SCOPES=('scope1' 'scope2') check-commit-message "$(git log -1 --pretty=%B)"
 ### environment variables
 [environment variables]: #environment-variables
 
-| name     | description             | required |
-|----------|-------------------------|----------|
-| `SCOPES` | array of allowed scopes | yes      |
+| name     | description                                         | required |
+|----------|-----------------------------------------------------|----------|
+| `SCOPES` | array of allowed scopes (empty = any scope allowed) | no       |
 
 ## github actions
 [github actions]: #github-actions

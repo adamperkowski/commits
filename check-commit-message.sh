@@ -10,8 +10,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 if [ -z "$SCOPES" ]; then
-  echo "SCOPES environment variable is not set"
-  exit 1
+  echo "SCOPES environment variable is not set. all scopes allowed."
 fi
 
 INPUT="$1"
@@ -33,7 +32,7 @@ check_message() {
     return 1
   fi
 
-  if [[ ! " ${ALLOWED_SCOPES[*]} " =~ ${scope} ]]; then
+  if [[ -n "$ALLOWED_SCOPES" ]] && [[ ! " ${ALLOWED_SCOPES[*]} " =~ ${scope} ]]; then
     echo "invalid scope:  ${scope}"
     echo "allowed scopes: ${ALLOWED_SCOPES[*]}"
     return 1

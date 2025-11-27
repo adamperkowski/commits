@@ -9,6 +9,17 @@ on:
       - main
 
 jobs:
+  shell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: install shfmt
+        run: sudo apt install -y shfmt
+      - name: formatting
+        run: shfmt -d .
+      - name: shellcheck
+        uses: ludeeus/action-shellcheck@master
+
   misc:
     runs-on: ubuntu-latest
     steps:

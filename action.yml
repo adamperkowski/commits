@@ -6,7 +6,7 @@ branding:
 inputs:
   scopes:
     description: comma separated list of allowed scopes
-    required: true
+    required: false
 runs:
   using: composite
   steps:
