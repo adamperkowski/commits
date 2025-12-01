@@ -22,6 +22,11 @@ check_message() {
   local msg_full="${message#*: }"
   readarray -t msg <<<"$msg_full"
 
+  if ((${#msg[0]} > 50)); then
+    echo "header cannot exceed 50 characters"
+    return 1
+  fi
+
   if [[ -z "$msg_full" ]] || [[ "$msg_full" == "$message" ]]; then
     echo "message cannot be empty or same as scope"
     return 1
@@ -48,7 +53,7 @@ check_message() {
     return 1
   fi
 
-  if [[ -n "${msg[2]}" ]]; then
+  if [[ -z "${msg[2]}" ]]; then
     return 0
   fi
 
@@ -61,11 +66,6 @@ check_message() {
 
   return 0
 }
-
-if (("${#INPUT}" > 50)); then
-  echo "commit message cannot exceed 50 characters"
-  exit 1
-fi
 
 MESSAGES=()
 while [[ "$INPUT" ]]; do
