@@ -14,7 +14,7 @@ you can run the latest version directly with
 
 ```bash
 curl -sSL https://commits.adamperkowski.dev |
-  SCOPES=('scope1' 'scope2')
+  SCOPES=('scope1' 'scope2') \
   bash -s -- \
   <message>
 ```

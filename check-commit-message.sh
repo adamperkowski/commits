@@ -4,8 +4,10 @@
 
 set -eo pipefail
 
+NAME='check-commit-message'
+
 if [ "$#" -ne 1 ]; then
-  echo "usage: $0 <message>"
+  echo "usage: $NAME <message>"
   exit 1
 fi
 
