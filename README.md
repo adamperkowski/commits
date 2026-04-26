@@ -13,7 +13,7 @@ this is a bash script to validate your commit messages before pushing
 you can run the latest version directly with
 
 ```bash
-curl -sSL https://commits.adamperkowski.dev |
+curl -sSL commits.koi.rip |
   SCOPES="scope1 scope2" \
   bash -s -- \
   "<message>"
@@ -41,7 +41,7 @@ you can use [check-commit-message] in your github actions workflows
 
 ```yml
 - name: check commit message
-  uses: adamperkowski/commits@main
+  uses: koibtw/commits@main
   with:
     scopes: 'scope1,scope2'
 ```
@@ -53,7 +53,7 @@ you can use the [docker image][docker] in your woodpecker ci pipelines
 
 ```yml
 - name: check commit message
-  image: codeberg.org/adamperkowski/commits:latest
+  image: codeberg.org/koibtw/commits:latest
   environment:
     SCOPES: "scope1 scope2"
   commands:
@@ -67,6 +67,6 @@ you can run the docker image directly
 
 ```bash
 docker run --rm -e 'SCOPES="scope1 scope2"' \
-  codeberg.org/adamperkowski/commits:latest \
+  codeberg.org/koibtw/commits:latest \
   check-commit-message "<message>"
 ```

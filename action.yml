@@ -16,7 +16,7 @@ runs:
     - name: download check-commit-message
       shell: bash
       run: |
-        curl -L -o check-commit-message.sh https://commits.adamperkowski.dev
+        curl -L -o check-commit-message.sh https://commits.koi.rip
         chmod +x check-commit-message.sh
     - name: set scopes
       shell: bash
