@@ -3,14 +3,18 @@
 }:
 
 let
-  pkgInputs = with pkgs; [ shfmt shellcheck docker ];
+  packages = with pkgs; [
+    shfmt
+    shellcheck
+    docker
+  ];
 in
-pkgs.mkShell {
-  packages = pkgInputs;
-
+pkgs.mkShellNoCC {
+  inherit packages;
   shellHook = ''
     echo -ne "-----------------------------------\n "
-    echo -n "${toString (map (pkg: "• ${pkg.name}\n") pkgInputs)}"
+    echo -n "${toString (map (pkg: "• ${pkg.name}\n") packages)}"
     echo "-----------------------------------"
+    export DOCKER_HOST="unix:///run/user/$UID/docker.sock"
   '';
 }
